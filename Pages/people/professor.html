@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5RKTB94');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Professor | ACG Lab</title>
+  <!-- 파비콘 태그 추가 -->
+  <link rel="icon" href="../../img/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon_io/apple-touch-icon.png">
+  <link rel="manifest" href="/img/favicon_io/site.webmanifest">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0e341b; /* Pantone 3435C: RGB(14, 52, 27) */
+      --secondary-color: #1d1d1f;
+      --background-light: #f5f5f7;
+      --text-dark: #1d1d1f;
+      --text-light: #f5f5f7;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --transition-speed: 0.4s;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      font-family: 'Noto Sans KR', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 44px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      margin: 0 15px;
+      position: relative;
+      text-align: center;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: var(--transition-speed);
+    }
+    
+    nav a:hover {
+      opacity: 1;
+    }
+    
+    /* 드롭다운 메뉴 스타일 */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+    
+    .dropdown-toggle:after {
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-left: 5px;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      padding: 0.5rem 0;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 15px;
+      text-align: left;
+      font-size: 14px;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: rgba(255,255,255,0.05);
+    }
+    
+    /* 데스크톱에서는 호버 시 드롭다운 메뉴 표시 */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+    
+    /* 모바일에서 드롭다운 메뉴 */
+    @media (max-width: 768px) {
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        display: block;
+      }
+      
+      /* 서브메뉴 확장 스타일 */
+      .dropdown-menu.show {
+        max-height: 500px; /* 충분히 큰 값으로 설정 */
+      }
+      
+      .dropdown-menu a {
+        padding: 10px 0;
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none;
+        margin: 0;
+      }
+      
+      .dropdown-menu a:hover {
+        color: #fff;
+        background-color: transparent;
+      }
+      
+      /* 활성화된 드롭다운 토글 버튼 스타일 */
+      .dropdown-toggle.active:after {
+        content: '\f106'; /* 위쪽 화살표로 변경 */
+      }
+    }
+    
+    .page-header {
+      height: 40vh;
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 44px;
+    }
+    
+    .page-header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .page-header-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    main {
+      padding: 4rem 0;
+      margin-top: 2rem; /* 이 부분을 추가하여 page-header와 container 사이 여백 추가 */
+    }
+    
+    section {
+      margin-bottom: 4rem;
+    }
+    
+    .section-title {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--secondary-color);
+      font-weight: 500;
+    }
+    
+    .professor-profile {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      max-width: 1000px;
+      margin: 0 auto;
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      padding: 2rem;
+    }
+    
+    .professor-image {
+      width: 100%;
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+      height: fit-content;
+      max-height: 100%;
+    }
+    
+    .professor-image::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, 
+        rgba(255,255,255,0) 0%, 
+        rgba(255,255,255,0.5) 70%, 
+        rgba(255,255,255,0.95) 90%,
+        rgba(255,255,255,1) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+    
+    .professor-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      object-position: top;
+    }
+    
+    .professor-info h2 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+      text-align: left;
+      color: var(--primary-color);
+    }
+    
+    .professor-title {
+      font-size: 1.2rem;
+      color: #666;
+      margin-bottom: 1.5rem;
+    }
+    
+    .professor-bio {
+      margin-bottom: 2rem;
+    }
+    
+    .professor-contact {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .professor-contact a {
+      color: var(--primary-color);
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .professor-contact a:hover {
+      transform: translateY(-3px);
+    }
+    
+    .professor-contact span {
+      font-size: 0.9rem;
+    }
+    
+    .professor-education, .professor-experience, .professor-awards, .professor-titles {
+      margin-bottom: 1.5rem;
+    }
+    
+    .professor-education h3, .professor-experience h3, .professor-awards h3, .professor-research h3, .professor-titles h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      color: var(--primary-color);
+    }
+    
+    .professor-education ul, .professor-experience ul, .professor-awards ul, .professor-titles ul {
+      list-style-type: disc;
+      padding-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .professor-education li, .professor-experience li, .professor-awards li, .professor-titles li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .professor-research p {
+      margin-bottom: 1rem;
+    }
+    
+    .research-interests {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .research-tag {
+      background-color: var(--background-light);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: var(--secondary-color);
+    }
+    
+    footer {
+      background-color: var(--secondary-color);
+      color: #fff;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section a {
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-section a:hover {
+      opacity: 1;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+    }
+    
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .social-icons {
+      margin-bottom: 1rem;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 1rem 0;
+      }
+      
+      nav li {
+        margin: 1rem 0;
+      }
+      
+      nav ul.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .professor-profile {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .professor-image {
+        order: 2; /* professor-contact 다음, professor-bio 이전으로 순서 변경 */
+        max-width: 300px;
+        height: 300px;
+        margin: 1.5rem auto; /* 상하 여백 추가 */
+        overflow: hidden;
+      }
+      
+      .professor-info {
+        order: 1; /* 가장 먼저 표시 */
+        width: 100%;
+      }
+      
+      .professor-bio {
+        order: 3; /* 이미지 다음에 표시 */
+        width: 100%;
+      }
+      
+      .professor-details {
+        order: 4; /* 가장 마지막에 표시 */
+        width: 100%;
+      }
+      
+      .professor-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top center;
+      }
+      
+      /* professor-info 내부에서 professor-bio를 분리 */
+      .professor-info {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .professor-info > *:not(.professor-bio) {
+        order: 1; /* professor-bio를 제외한 모든 요소가 먼저 표시 */
+      }
+      
+      .professor-info > .professor-bio {
+        order: 3; /* professor-bio는 이미지 다음에 표시되도록 */
+      }
+    }
+
+    /* 메뉴 토글 버튼 스타일 */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* 모바일 메뉴 아이콘 */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* PC에서는 메뉴가 우측에 표시됨 */
+    @media (min-width: 769px) {
+      nav {
+        justify-content: space-between;
+      }
+      
+      .logo {
+        margin-right: auto;
+      }
+      
+      nav ul {
+        justify-content: flex-end;
+      }
+    }
+    
+    /* 420px 미만의 작은 화면 최적화 (추가) */
+    @media (max-width: 420px) {
+      /* 본문 텍스트 크기 조정 */
+      .professor-bio p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+      
+      /* 교수 제목 및 이름 크기 조정 */
+      .professor-info h2 {
+        font-size: 1.8rem;
+      }
+      
+      .professor-title {
+        font-size: 1rem;
+      }
+      
+      /* 연락처 정보 조정 */
+      .professor-contact {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+      }
+      
+      /* 연구 태그 크기 조정 */
+      .research-interests {
+        margin-top: 0.7rem;
+      }
+      
+      .research-tag {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      /* 컨테이너 패딩 줄이기 */
+      .container {
+        padding: 0 1rem;
+      }
+      
+      /* 교수 프로필 카드 패딩 줄이기 */
+      .professor-profile {
+        padding: 1rem;
+      }
+      
+      /* 교수 사진 크기 조정 */
+      .professor-image {
+        max-width: 250px;
+        height: 250px;
+      }
+      
+      /* 섹션 헤더 크기 조정 */
+      .professor-details h3 {
+        font-size: 1.1rem;
+        margin-top: 1.5rem;
+      }
+      
+      /* 리스트 아이템 여백 및 텍스트 크기 조정 */
+      .professor-details ul {
+        padding-left: 1.2rem;
+      }
+      
+      .professor-details li {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        margin-bottom: 0.4rem;
+      }
+      
+      /* 페이지 헤더 조정 */
+      .page-header-content h1 {
+        font-size: 1.8rem;
+      }
+      
+      .page-header-content p {
+        font-size: 1rem;
+      }
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5RKTB94"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header id="main-header">
+    <div class="container">
+      <nav>
+        <a href="../../index.html" class="logo">ACG Lab</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">People</a>
+            <div class="dropdown-menu">
+              <a href="professor.html">Professor</a>
+              <a href="postdocs.html">Post doc.</a>
+              <a href="students.html">Students</a>
+              <a href="alumni.html">Alumni</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Research</a>
+            <div class="dropdown-menu">
+              <a href="../projects/ongoing.html">Ongoing Projects</a>
+              <a href="../projects/completed.html">Completed Projects</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Publications</a>
+            <div class="dropdown-menu">
+              <a href="../publications/journal.html">Journal Articles</a>
+              <a href="../publications/conference.html">Conference Papers</a>
+              <a href="../publications/book_chapters.html">Book Chapters & Articles</a>
+              <a href="../publications/patents.html">Patents</a>
+            </div>
+          </li>
+          <li><a href="../gallery/gallery.html">Gallery</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container page-header-content">
+      <h1>Professor</h1>
+      <p>Meet our laboratory director and lead researcher</p>
+    </div>
+  </div>
+
+  <div style="height: 6rem;"></div>
+
+  <main class="container">
+    <section id="professor-profile" class="animate-on-scroll">
+      <div class="professor-profile">
+        <div class="professor-image">
+          <img src="../../img/people/professor/photo_kwon.png?v=?php echo time(); ?>" alt="권순욱 교수 이미지">
+        </div>
+        <div class="professor-info">
+          <h2>권순욱 교수</h2> 
+          <h2>Soonwook Kwon</h2>
+          <p class="professor-title">성균관대학교 건설환경공학부 교수</p>
+          
+          <div class="professor-contact">
+            <a href="mailto:swkwon@skku.edu"><i class="fas fa-envelope"></i><span>swkwon@skku.edu</span></a>
+            <a href="tel:031-290-7652"><i class="fas fa-phone"></i><span>031-290-7652</span></a>
+          </div>
+          
+          <div class="professor-bio">
+            <p> 주요 프로젝트로는 FAB 진공 배관 설계를 위한 AI기반 자동 라우팅 및 BIM 모델링 자동화 기술 확보, 건설현장 정보 수집 및 분석 기술 개발, AR/VR/MR 기술을 활용한 현장정보 시각화 및 공유 기술 개발, 공동주택 정밀시공과 품질 확보를 위한 XR 기반 시공현황관리 작업환경 플랫폼 및 메타버스 기반 협업 공유기술 개발, CPS 기반의 스마트 Fab 유지관리를 위한 DPL 응용기술 개발, OSC기반 공동주택 생산시스템 혁신기술 개발, 임시구조물 스마트 안전확보 기술 개발, 전통시장 디지털 융합 및 지속가능한 자생력 향상을 위한 온고지신 플랫폼 개발, ACR 기반의 플랜트 시공/ 유지관리를 위한 스마트 웨어러블 디바이스용 시스템 개발 등이 있으면 국가 건설연구개발사업 전략수립, 첨단융복합 건설기술 전략수립, 초고층시공기술개발 연구기획, IT융복합 전략수립등과 같은 다수의 국가 건설 R&D 전략수립 및 로드맵 기획에 참여했다.</p>
+            <p style="margin-bottom: 1.5rem;"></p>
+            <p> He participated extensively in the strategic planning and roadmap development of national construction R&D initiatives, including national construction research and development strategies, advanced convergent construction technology strategies, high-rise building construction technology development research planning, and IT convergence strategies.</p>
+         
+            <div class="research-interests">
+              <span class="research-tag">Automation</span>
+              <span class="research-tag">Robotics</span>
+              <span class="research-tag">AI/NLP</span>
+              <span class="research-tag">BIM/IT Consulting</span>
+              <span class="research-tag">AR/VR/MR/XR</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="professor-details" style="grid-column: 1 / -1; margin-top: 2rem;">
+          <!-- 기존 education, experience, awards, titles 섹션 위에 추가 -->
+          <div class="professor-education">
+            <h3>Research Interests</h3>
+            <ul>
+              <li>스마트 건설 (Smart Construction) 및 하이테크 FAB(반도체, 배터리, 디스플레이) Digital Transformation 컨설팅</li>
+              <li>반도체 BIM Process Innovation 컨설팅</li>
+              <li>레이저 스캐닝/이미지 캡쳐링을 활용한 역설계(레이저 스캐너, 드론, 모바일 카메라)</li>
+              <li>AEC(건축, 엔지니어링, 시공)을 대상으로 한 Rapid Prototyping 기술</li>
+              <li>초고층 빌딩 건설을 위한 첨단 공법 및 건설 자동화</li>
+              <li>로보틱스와 IoT(사물인터넷) 기반의 시공 및 유지관리</li>
+              <li>BIM서비스에 기반한 빅데이터와 클라우드 컴퓨팅</li>
+              <li>스마트 노령공학(Gerontechnology)</li>
+              <li>BIM based Smart FAB Maintence and Operation</li>
+            </ul>
+          </div>
+          
+          <div class="professor-education">
+            <h3>Education</h3>
+            <ul>
+              <li>(Ph.D.) The University of Texas at Austin, CEPM(Construction Engineering and Project Management), 2003</li>
+              <li>(M.S.) Georgia Institute of Technology, Design Computing, 1999</li>
+              <li>(B.S.) Hongik University, Architecture, 1992</li>
+            </ul>
+          </div>
+          
+          <div class="professor-experience">
+            <h3>Professional Experience</h3>
+            <ul>
+              <li>(2006 - 현재) 성균관대학교 건설환경공학부(건축공학) 교수 </li>
+              <li>(2003 - 2006) 한국건설기술연구원 건설관리연구부 선임연구원 </li>
+              <li>(1994 - 1997) 삼성물산 건설부문 대리 </li>
+            </ul>
+          </div>
+          
+          <div class="professor-awards">
+            <h3>Awards</h3>
+            <ul>
+              <li>(2025) 대한건축학회 춘계학술발표대회 특별상(홍전상)</li>
+              <li>(2021) 한국도로학회 가을학술대회 우수논문상</li>
+              <li>(2020) 국토교통부장관 표창장</li>
+              <li>(2020) 대한건축학회 교육상</li>
+              <li>(2020) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2019) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2018) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2015) 대한건축학회 추계학술발표대회 우수논문상</li>
+              <li>(2014) 한국건설관리학회 추계학회상</li>
+              <li>(2014) 빌딩스마트협회 공로상</li>
+              <li>(2013) 한국건설관리학회 정기학술상</li>
+              <li>(2012) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2010) ISARC ISARC BEST paper 국제건설 자동화 컨퍼런스 최우수 논문상</li>
+              <li>(2008) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2007) 한국건설관리학회 학회상 논문 부문</li>
+              <li>(2007) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+              <li>(2006) 한국건설관리학회 정기학술 발표대회 우수논문상</li>
+            </ul>
+          </div>
+          
+          <div class="professor-titles">
+            <h3>Titles and Positions</h3>
+            <ul>
+              <li>수원시 기술자문위원회 위원</li>
+              <li>조달청 공사관리 자문위원</li>
+              <li>한국토지주택공사 공동주택 외부품질점검단 위원</li>
+              <li>IAARC Board of Director member</li>
+              <li>한국건설관리학회 제12대 부회장</li>
+              <li>한국BIM학회 학회연구소 소장</li>
+              <li>빌딩스마트협회 연구편집이사</li>
+              <li>한국건설자동화로보틱스학회 부회장</li>
+              <li>대한건축학회 건축생산시스템혁신(OSC)위원회 위원</li>
+              <li>대한건축학회 국가계약법제도선진화특별위원회 위원</li>
+              <li>대한건축학회 상훈위원회 위원</li>
+              <li>대한건축학회 시설경영및유지관리위원회 위원</li>
+              <li>대한건축학회 인공지능(AI)건축위원회 위원</li>
+              <li>한국건설관리학회 논문편집위원회 위원</li>
+              <li>한국건설관리학회 대외협력위원회 위원</li>
+              <li>대한건축학회 건축생산시스템(OSC)위원회 위원</li>
+              <li>대한건축학회 국제위원회 위원장</li>
+              <li>대한건축학회 상훈위원회 위원</li>
+              <li>대한건축학회 학회제도및정관개정위원회 위원</li>
+              <li>대한건축학회 참여이사</li>
+              <li>대한건축학회 이사</li>
+              <li>대한건축학회 회지편집위원회 부위원장(공학분야담당)</li>
+              <li>대한건축학회 건축공학교육위원회 위원</li>
+              <li>경기도 건설본부 신청사 건립자문위원회 위원</li>
+              <li>경기도 교육청 민간투자사업심의 위원회 위원</li>
+              <li>한국교육과정평가원 설계자문 위원회 자문위원</li>
+              <li>한국건설관리학회 국제교류 위원회 위원</li>
+              <li>한국건설관리학회 상임논문심사 위원</li>
+              <li>한국BIM학회 논문 편집 위원회 위원</li>
+              <li>국토해양부 건설기술진흥기본계획 건설정보화분과 위원</li>
+              <li>ICCEM ICCPM 2009(국제건설관리심포지엄) 조직위 부위원장</li>
+              <li>고기능 구조물 시공기술 표준화 기술자문위원회 위원</li>
+              <li>한국건설관리학회 발간사업 위원회 부위원장</li>
+              <li>한국건설관리학회 연구개발 위원회 부위원장</li>
+              <li>한국건설관리학회 지속가능발전 위원회 부위원장</li>
+              <li>한국 RFID/USN 협회 건설교통 WG 그룹장 </li>
+              <li>건설생산성 향상을 위한 건설자재 표준화 연구단 기획위원</li>
+              <li>대한건축학회 학술지편집 위원회 위원</li>
+              <li>한국건설관리학회 정기학술발표대회 준비위원 학술분과 위원</li>
+              <li>2006년 SI혁신포럼 및 u-Construction workshop 준비위원</li>
+              <li>한국건설관리학회 학술지평가 준비위원</li>
+              <li>첨단융합건설연구단 기획위원</li>
+              <li>경기도 설계 심의위원</li>
+              <li>대한주택공사 건설기술 심의위원</li>
+              <li>인천광역시관광공사 설계자문 위원회 위원</li>
+              <li>경기도시공사 설계 심의위원</li>
+              <li>경기도 지방건설기술 심의위원</li>
+              <li>경기도 민간 전문 감사관</li>
+              <li>아산시 설계자문 위원회 위원</li>
+              <li>하남시 건설기술 심의위원</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ACG Lab</h3>
+          <p>Advanced Convergence Technology Group</p>
+          <p>첨단 융합 기술 연구실</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="professor.html">Professor</a></li>
+            <li><a href="postdocs.html">Post doc.</a></li>
+            <li><a href="students.html">Students</a></li>
+            <li><a href="../projects/ongoing.html">Research</a></li>
+            <li><a href="../publications/journal.html">Publications</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>경기도 수원시 장안구 서부로 2066</p>
+          <p>성균관대학교 자연과학캠퍼스 제1공학관 22404A호</p>
+          <p>Tel: 031-290-7652</p>
+          <p>Email: swkwon@skku.edu</p>
+        </div>
+      </div>
+      <!--
+      <div class="social-icons">
+        <a href="#" aria-label="트위터"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="링크드인"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="깃허브"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="유튜브"><i class="fab fa-youtube"></i></a>
+      </div>
+      -->
+      <div class="footer-bottom"></div>
+        <p>&copy; 2025 ACG Lab - Advanced Convergence Technology Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 스크롤 애니메이션
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    
+    const observerOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.1
+    };
+    
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    animatedElements.forEach(el => {
+      observer.observe(el);
+    });
+    
+    // 헤더 스크롤 효과
+    const header = document.getElementById('main-header');
+    
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+      } else {
+        header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+      }
+    });
+    
+    // 교수님 사진 크기 조절
+    function adjustProfessorImageHeight() {
+      const professorInfo = document.querySelector('.professor-info');
+      const professorBio = document.querySelector('.professor-bio');
+      const professorImage = document.querySelector('.professor-image');
+      const professorImageImg = document.querySelector('.professor-image img');
+      
+      if (professorBio && professorImage && professorImageImg && window.innerWidth > 768) {
+        // professor-bio 요소의 위치와 크기 정보 가져오기
+        const bioRect = professorBio.getBoundingClientRect();
+        const infoRect = professorInfo.getBoundingClientRect();
+        
+        // professor-bio의 하단 위치 계산 (상대적 위치)
+        const bioBottom = bioRect.bottom - infoRect.top;
+        
+        // 이미지 높이 조절
+        professorImage.style.height = bioBottom + 'px';
+        professorImageImg.style.height = '100%';
+        professorImageImg.style.objectFit = 'cover';
+        professorImageImg.style.objectPosition = 'top center';
+      } else if (professorImage && window.innerWidth <= 768) {
+        // 모바일에서는 CSS로 정의된 고정 높이(300px) 사용
+        professorImage.style.height = '300px';  // 명시적으로 300px 설정
+        if (professorImageImg) {
+          professorImageImg.style.height = '100%';
+          professorImageImg.style.objectFit = 'cover';
+          professorImageImg.style.objectPosition = 'top center';
+        }
+      }
+    }
+    
+    // 모바일에서 교수 이미지 위치 조정 (연락처와 바이오 사이)
+    function adjustMobileLayout() {
+      if (window.innerWidth <= 768) {
+        const professorProfile = document.querySelector('.professor-profile');
+        const professorInfo = document.querySelector('.professor-info');
+        const professorImage = document.querySelector('.professor-image');
+        const professorBio = document.querySelector('.professor-bio');
+        const professorContact = document.querySelector('.professor-contact');
+        
+        if (professorProfile && professorInfo && professorImage && professorBio && professorContact) {
+          // 이미 처리되었는지 확인
+          if (!professorProfile.classList.contains('mobile-layout-applied')) {
+            // 모바일 레이아웃 플래그 설정
+            professorProfile.classList.add('mobile-layout-applied');
+            
+            // 원래 위치에서 요소 제거 후 새 위치에 삽입
+            professorBio.parentNode.removeChild(professorBio);
+            professorImage.parentNode.removeChild(professorImage);
+            
+            // contact 다음에 이미지 삽입
+            professorContact.insertAdjacentElement('afterend', professorImage);
+            // 이미지 다음에 bio 삽입
+            professorImage.insertAdjacentElement('afterend', professorBio);
+          }
+        }
+      } else {
+        // 데스크톱 레이아웃으로 복원
+        const professorProfile = document.querySelector('.professor-profile');
+        
+        if (professorProfile && professorProfile.classList.contains('mobile-layout-applied')) {
+          // 모바일 레이아웃 플래그 제거
+          professorProfile.classList.remove('mobile-layout-applied');
+          
+          // 기본 DOM 구조 복원 (페이지 새로고침)
+          location.reload();
+        }
+      }
+    }
+    
+    // 페이지 로드 및 리사이즈 시 이미지 높이 조절
+    adjustProfessorImageHeight();
+    adjustMobileLayout();
+    window.addEventListener('resize', function() {
+      adjustProfessorImageHeight();
+      adjustMobileLayout();
+    });
+    window.addEventListener('load', function() {
+      adjustProfessorImageHeight();
+      adjustMobileLayout();
+    });
+    
+    // 모바일 메뉴 토글 기능 개선
+    const menuToggle = document.querySelector('.menu-toggle');
+    const mainMenu = document.getElementById('main-menu');
+    
+    if (menuToggle && mainMenu) {
+      menuToggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation(); // 이벤트 버블링 방지
+        mainMenu.classList.toggle('active');
+        console.log('메인 메뉴 토글됨:', mainMenu.classList.contains('active'));
+      });
+    }
+    
+    // 모바일에서 드롭다운 메뉴 토글 기능 개선
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        // 모바일 환경에서만 기본 동작 방지 
+        if (window.innerWidth <= 768) {
+          e.preventDefault();
+          e.stopPropagation(); // 이벤트 버블링 방지
+          
+          // 드롭다운 메뉴 참조
+          const dropdownMenu = this.nextElementSibling;
+          
+          // 다른 모든 드롭다운 메뉴 닫기 (현재 클릭한 메뉴 외의 메뉴)
+          const allDropdowns = document.querySelectorAll('.dropdown-menu');
+          allDropdowns.forEach(menu => {
+            if (menu !== dropdownMenu) {
+              menu.classList.remove('show');
+            }
+          });
+          
+          // 현재 메뉴 토글
+          dropdownMenu.classList.toggle('show');
+          console.log('드롭다운 메뉴 토글됨:', dropdownMenu.classList.contains('show'));
+        }
+      });
+    });
+    
+    // 드롭다운 메뉴 내 링크 클릭 시 이벤트
+    const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+    dropdownLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        // 모바일 환경에서만 처리
+        if (window.innerWidth <= 768) {
+          // 링크 클릭 시 이벤트 버블링 방지하지 않음 (실제 이동 허용)
+          
+          // 지연 처리로 메뉴 닫기
+          setTimeout(() => {
+            mainMenu.classList.remove('active');
+            
+            // 모든 드롭다운 메뉴 닫기
+            const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+            allDropdownMenus.forEach(menu => {
+              menu.classList.remove('show');
+            });
+          }, 100);
+        }
+      });
+    });
+    
+    // 문서 어디든 클릭 시 모바일 메뉴 닫기
+    document.addEventListener('click', function(e) {
+      if (window.innerWidth <= 768) {
+        // 메뉴 토글 버튼이나 메인 메뉴 영역 클릭이 아닌 경우에만 처리
+        if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+          mainMenu.classList.remove('active');
+          
+          // 모든 드롭다운 메뉴 닫기
+          const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+          allDropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
+          });
+        }
+      }
+    });
+    
+    // 윈도우 크기 변경 시 모바일 메뉴 상태 리셋
+    window.addEventListener('resize', function() {
+      if (window.innerWidth > 768) {
+        mainMenu.classList.remove('active');
+        const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+        allDropdownMenus.forEach(menu => {
+          menu.classList.remove('show');
+        });
+      }
+    });
+  });
+  </script>
+</body>
+</html>

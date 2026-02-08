@@ -1,0 +1,140 @@
+const bookChaptersData = [
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  },
+  {
+    authors: "Kwon, S.W., Park, S.Y., Hong, J.T.",
+    book_title: "Advances in Civil Engineering and Infrastructure Development",
+    editors: "Johnson, R., Smith, K.",
+    publisher: "Springer"
+  }
+];

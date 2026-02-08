@@ -1,0 +1,1481 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Journal Publications | ACG Lab</title>
+  <!-- 파비콘 태그 추가 -->
+  <link rel="icon" href="../../img/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="../../img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../../img/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../../img/favicon_io/apple-touch-icon.png">
+  <link rel="manifest" href="/img/favicon_io/site.webmanifest">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0e341b; /* Pantone 3435C: RGB(14, 52, 27) */
+      --secondary-color: #1d1d1f;
+      --accent-color: #686868; /* 회색 */
+      --background-light: #f5f5f7;
+      --text-dark: #1d1d1f;
+      --text-light: #f5f5f7;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --transition-speed: 0.4s;
+      --sci-color: #0e341b; /* Panton Color 3435C */
+      --kci-color: #76b95e; /* Panton Color 367C */
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      font-family: 'Noto Sans KR', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 44px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      margin: 0 15px;
+      position: relative;
+      text-align: center;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: var(--transition-speed);
+    }
+    
+    nav a:hover {
+      opacity: 1;
+    }
+    
+    /* 드롭다운 메뉴 스타일 */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+    
+    .dropdown-toggle:after {
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-left: 5px;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      padding: 0.5rem 0;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 15px;
+      text-align: left;
+      font-size: 14px;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: rgba(255,255,255,0.05);
+    }
+    
+    /* 데스크톱에서는 호버 시 드롭다운 메뉴 표시 */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+    
+    /* 모바일에서 드롭다운 메뉴 */
+    @media (max-width: 768px) {
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        display: block;
+      }
+      
+      /* 서브메뉴 확장 스타일 */
+      .dropdown-menu.show {
+        max-height: 500px; /* 충분히 큰 값으로 설정 */
+      }
+      
+      .dropdown-menu a {
+        padding: 10px 0;
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none;
+        margin: 0;
+      }
+      
+      .dropdown-menu a:hover {
+        color: #fff;
+        background-color: transparent;
+      }
+      
+      /* 활성화된 드롭다운 토글 버튼 스타일 */
+      .dropdown-toggle.active:after {
+        content: '\f106'; /* 위쪽 화살표로 변경 */
+      }
+    }
+    
+    .page-header {
+      height: 40vh;
+      background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6));
+      background-size: cover;
+      background-position: center;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 44px;
+      margin-bottom: 3rem;
+    }
+    
+    .page-header-content h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .page-header-content p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    main {
+      padding: 4rem 0;
+      margin-top: 2rem;
+    }
+    
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    
+    .tab-button {
+      padding: 0.8rem 1.5rem;
+      background-color: #f5f5f7;
+      border: none;
+      border-radius: 30px;
+      margin: 0 0.5rem;
+      font-family: inherit;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .tab-button:hover {
+      background-color: #e5e5e7;
+    }
+    
+    .tab-button.active {
+      background-color: var(--primary-color);
+      color: white;
+      box-shadow: 0 4px 10px rgba(14, 52, 27, 0.2);
+    }
+    
+    .search-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--background-light);
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    
+    .search-input {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    
+    .filter-select {
+      padding: 0.75rem 1rem;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      font-size: 1rem;
+      background-color: white;
+      font-family: inherit;
+      min-width: 150px;
+    }
+    
+    .search-button {
+      padding: 0.75rem 1.5rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+    
+    .search-button:hover {
+      background-color: #0a2515;
+    }
+    
+    /* 논문 카드 스타일 */
+    .publications-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    
+    .publication-card {
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: var(--card-shadow);
+      padding: 2.2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+      position: relative;
+    }
+    
+    .publication-card:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 100%;
+      background-color: var(--primary-color);
+      opacity: 0.7;
+      border-radius: 16px 0 0 16px;
+    }
+    
+    .publication-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+    
+    .publication-year {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 0 16px 0 10px;
+      font-size: 1rem;
+      font-weight: bold;
+    }
+    
+    .publication-title {
+      font-size: 1.6rem;
+      color: var(--text-dark);
+      margin-bottom: 1rem;
+      margin-right: 80px; /* Space for the year badge */
+      line-height: 1.4;
+    }
+    
+    .publication-authors-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+    
+    .publication-authors {
+      color: #333;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    
+    .publication-journal {
+      font-style: italic;
+      color: var(--accent-color);
+      font-size: 1rem;
+      text-align: right;
+      margin-left: 1rem;
+    }
+    
+    .publication-coauthors {
+      color: #686868; /* 회색으로 공저자 표시 */
+      margin-bottom: 1rem;
+      font-size: 1rem;
+      font-style: italic;
+    }
+    
+    .publication-details {
+      color: var(--accent-color);
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+    
+    .publication-abstract {
+      margin-bottom: 1.5rem;
+      color: #333;
+      line-height: 1.7;
+      border-left: 3px solid #ddd;
+      padding-left: 1rem;
+      background-color: rgba(0, 0, 0, 0.02);
+      padding: 1rem;
+      border-radius: 4px;
+    }
+    
+    .publication-links {
+      display: flex;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      margin: 0;
+    }
+    
+    /* 키워드 스타일 */
+    .publication-keywords {
+      margin-top: 0.8rem;
+      margin-bottom: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      flex: 1;
+    }
+    
+    /* 키워드-DOI 컨테이너 */
+    .keywords-doi-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    
+    .link-doi {
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    
+    .link-doi:hover {
+      background-color: #e4e4e4;
+    }
+    
+    .link-url {
+      background-color: #e8f0fe;
+      color: #1a73e8;
+    }
+    
+    .link-url:hover {
+      background-color: #d2e3fc;
+    }
+    
+    .link-pdf {
+      background-color: #fef2f2;
+      color: #e53e3e;
+    }
+    
+    .link-pdf:hover {
+      background-color: #fde8e8;
+    }
+    
+    .publication-link i {
+      margin-right: 0.4rem;
+    }
+    
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: flex-end;
+    }
+    
+    .publication-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+    
+    /* 논문 카테고리 마크 스타일 */
+    .category-badge {
+      display: inline-block;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: white;
+      margin-left: 10px;
+      vertical-align: middle;
+    }
+    
+    .sci-badge {
+      background-color: var(--sci-color);
+    }
+    
+    .kci-badge {
+      background-color: var(--kci-color);
+    }
+    
+    /* 키워드 스타일 */
+    .publication-keywords {
+      margin-top: 0.8rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    
+    .keyword-tag {
+      background-color: #f5f5f7;
+      border-radius: 30px;
+      padding: 0.3rem 0.8rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--accent-color);
+      display: inline-flex;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    
+    .keyword-tag:hover {
+      transform: translateY(-2px);
+      background-color: #e8e8e8;
+    }
+    
+    .keyword-tag i {
+      font-size: 0.7rem;
+      margin-right: 0.4rem;
+      color: var(--primary-color);
+    }
+    
+    /* 결과 없음 메시지 */
+    .no-results {
+      text-align: center;
+      padding: 3rem;
+      font-size: 1.2rem;
+      color: var(--accent-color);
+    }
+    
+    footer {
+      background-color: var(--secondary-color);
+      color: #fff;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section a {
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-section a:hover {
+      opacity: 1;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+    }
+    
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .social-icons {
+      margin-bottom: 1rem;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 768px) {
+      .page-header h1 {
+        font-size: 2.2rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 1rem 0;
+      }
+      
+      nav li {
+        margin: 1rem 0;
+      }
+      
+      nav ul.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+      
+      nav li {
+        width: 100%;
+        text-align: center;
+      }
+      
+      .publication-title {
+        font-size: 1.2rem; /* 모바일에서 논문 제목 폰트 크기 축소 (1.4rem에서 1.2rem으로) */
+        line-height: 1.3; /* 줄 간격도 약간 축소 */
+        margin-right: 50px;
+      }
+
+      .search-container {
+        flex-direction: column;
+      }
+
+      .search-input, .filter-select, .search-button {
+        width: 100%;
+      }
+      
+      /* 모바일에서 abstract 숨기기 */
+      .publication-abstract {
+        display: none;
+      }
+      
+      /* 모바일에서 키워드 태그 숨기기 */
+      .publication-keywords,
+      .keyword-tag {
+        display: none;
+      }
+      
+      /* 카드가 화면을 넘어가지 않도록 패딩 조정 */
+      .publication-card {
+        padding: 1.5rem;
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+        overflow: hidden;
+      }
+      
+      /* 이게 기준임 */
+      .container {
+        padding: 0 2rem;
+      }
+      
+      /* 연도 배지 크기 축소 */
+      .publication-year {
+        padding: 0.3rem 0.8rem;
+        font-size: 0.9rem;
+      }
+      
+      /* 모바일에서 저자-저널 컨테이너 조정 */
+      .publication-authors-container {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      
+      .publication-journal {
+        text-align: left;
+        margin-left: 0;
+        margin-top: 0.5rem;
+        font-size: 0.9rem; /* 저널명 폰트 크기 축소 */
+      }
+      
+      .publication-authors {
+        font-size: 0.95rem; /* 저자명 폰트 크기 축소 */
+      }
+      
+      .publication-coauthors {
+        font-size: 0.9rem; /* 공저자 폰트 크기 축소 */
+      }
+      
+      /* 키워드-DOI 컨테이너 간격 줄이기 */
+      .keywords-doi-container {
+        margin-top: 0.5rem;
+        justify-content: flex-end;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .pagination-button {
+        padding: 6px 10px;
+        margin: 0 2px;
+        font-size: 0.9rem;
+      }
+      
+      .publication-title {
+        font-size: 1.1rem; /* 더 작은 화면에서는 제목 폰트 크기를 더 작게 */
+        margin-right: 45px;
+      }
+      
+      .publication-year {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.8rem;
+      }
+      
+      .publication-authors {
+        font-size: 0.9rem;
+      }
+      
+      .publication-journal {
+        font-size: 0.85rem;
+      }
+      
+      .publication-coauthors {
+        font-size: 0.85rem;
+      }
+      
+      .publication-card {
+        padding: 1.2rem;
+      }
+    }
+
+    /* 메뉴 토글 버튼 스타일 */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* 모바일 메뉴 아이콘 */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+
+    /* PC에서는 메뉴가 우측에 표시됨 */
+    @media (min-width: 769px) {
+      nav {
+        justify-content: space-between;
+      }
+      
+      .logo {
+        margin-right: auto;
+      }
+      
+      nav ul {
+        justify-content: flex-end;
+      }
+    }
+
+    /* 카테고리 필터 스타일 */
+    .category-filter-container {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-label {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .category-checkbox {
+      margin-right: 0.4rem;
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* 페이지네이션 스타일 개선 */
+    .pagination-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 2.5rem;
+      gap: 0.5rem;
+    }
+    
+    .pagination-button {
+      min-width: 40px;
+      height: 40px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e0e0e0;
+      background-color: white;
+      color: var(--text-dark);
+      border-radius: 50%;
+      font-weight: 500;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+    
+    .pagination-button:hover {
+      background-color: #f5f5f7;
+      border-color: #d0d0d0;
+      transform: translateY(-2px);
+    }
+    
+    .pagination-button.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+      box-shadow: 0 4px 8px rgba(14, 52, 27, 0.2);
+      transform: translateY(-2px);
+    }
+    
+    .pagination-button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+      transform: none;
+    }
+    
+    .pagination-button i {
+      font-size: 0.8rem;
+    }
+    
+    /* 처음/마지막 버튼 스타일 */
+    .pagination-button.first-page,
+    .pagination-button.last-page {
+      background-color: #f5f5f7;
+    }
+    
+    /* 모바일 대응 */
+    @media (max-width: 768px) {
+      .pagination-container {
+        gap: 0.25rem;
+      }
+      
+      .pagination-button {
+        min-width: 36px;
+        height: 36px;
+        font-size: 0.8rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .pagination-button {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header id="main-header">
+    <div class="container">
+      <nav>
+        <a href="../../index.html" class="logo">ACG Lab</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu">
+          <li><a href="../../index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">People</a>
+            <div class="dropdown-menu">
+              <a href="../people/professor.html">Professor</a>
+              <a href="../people/postdocs.html">Post doc.</a>
+              <a href="../people/students.html">Students</a>
+              <a href="../people/alumni.html">Alumni</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Research</a>
+            <div class="dropdown-menu">
+              <a href="../projects/ongoing.html">Ongoing Projects</a>
+              <a href="../projects/completed.html">Completed Projects</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Publications</a>
+            <div class="dropdown-menu">
+              <a href="journal.html">Journal Articles</a>
+              <a href="conference.html">Conference Papers</a>
+              <a href="book_chapters.html">Book Chapters & Articles</a>
+              <a href="patents.html">Patents</a>
+            </div>
+          </li>
+          <li><a href="../gallery/gallery.html">Gallery</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container page-header-content">
+      <h1>Journal Publications</h1>
+      <p>Research articles published in peer-reviewed academic journals</p>
+    </div>
+  </div>
+
+  <main class="container">
+    <section id="publications-section" class="animate-on-scroll">
+      <!-- 탭 버튼 제거됨 -->
+      
+      <div class="search-container">
+        <input type="text" id="search-input" class="search-input" placeholder="제목, 저자, 저널명, 키워드로 검색...">
+        <select id="year-filter" class="filter-select">
+          <option value="all">모든 연도</option>
+        </select>
+        <!-- 카테고리 필터 -->
+        <div class="category-filter-container">
+          <span class="filter-label">카테고리:</span>
+          <div class="checkbox-group">
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-checkbox" value="SCI" checked> SCI
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-checkbox" value="KCI" checked> KCI
+            </label>
+            <label class="checkbox-label">
+              <input type="checkbox" class="category-checkbox" value="OTHER" checked> OTHER
+            </label>
+          </div>
+        </div>
+        <button id="search-button" class="search-button">검색</button>
+      </div>
+
+      <div id="loading-indicator" style="text-align: center; padding: 2rem; display: none;">
+        <p><i class="fas fa-spinner fa-spin"></i> 데이터를 불러오는 중...</p>
+      </div>
+
+      <div id="publication-list" class="publications-grid">
+        <!-- 데이터가 여기에 로드됩니다 -->
+      </div>
+      <div id="pagination"></div>
+    </section>
+  </main>
+
+  <!-- 메인과 푸터 사이 간격 추가 -->
+  <div style="margin-top: 4rem;"></div>
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ACG Lab</h3>
+          <p>Advanced Convergence Technology Group</p>
+          <p>첨단 융합 기술 연구실</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="../people/professor.html">Professor</a></li>
+            <li><a href="../people/postdocs.html">Post doc.</a></li>
+            <li><a href="../people/students.html">Students</a></li>
+            <li><a href="../projects/ongoing.html">Research</a></li>
+            <li><a href="journal.html">Publications</a></li>
+            <li><a href="../contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>경기도 수원시 장안구 서부로 2066</p>
+          <p>성균관대학교 자연과학캠퍼스 제1공학관 22404A호</p>
+          <p>Tel: 031-290-7652</p>
+          <p>Email: swkwon@skku.edu</p>
+        </div>
+      </div>
+      <div class="social-icons">
+        <a href="#" aria-label="트위터"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="링크드인"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="깃허브"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="유튜브"><i class="fab fa-youtube"></i></a>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ACG Lab - Advanced Convergence Technology Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- 원본 journalData.js 파일 대신 페이지네이션을 위한 스크립트 사용 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 전역 변수
+      const loadingIndicator = document.getElementById('loading-indicator');
+      const ITEMS_PER_PAGE = 10; // 페이지당 항목 수
+      let currentPage = 1;
+      let filteredData = []; // 필터링된 데이터를 저장할 변수
+      
+      // 초기 데이터 로드
+      loadJournalData();
+
+      // 검색 버튼 클릭 시 필터링 수행
+      document.getElementById('search-button').addEventListener('click', filterPublications);
+      
+      // 엔터키 누르면 검색 실행
+      document.getElementById('search-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+          filterPublications();
+        }
+      });
+      
+      // 연도 필터 변경 시 필터링
+      document.getElementById('year-filter').addEventListener('change', filterPublications);
+      
+      // 카테고리 체크박스 이벤트 리스너 추가
+      document.querySelectorAll('.category-checkbox').forEach(checkbox => {
+        checkbox.addEventListener('change', filterPublications);
+      });
+
+      // 논문 데이터 로드 함수
+      function loadJournalData() {
+        loadingIndicator.style.display = 'block';
+        
+        // journalData.js 파일 동적 로드
+        const script = document.createElement('script');
+        script.src = "../../js/publications/journalData.js?v=<?php echo time(); ?>";
+        script.onload = function() {
+          loadingIndicator.style.display = 'none';
+          
+          // 전역 변수 journalData가 정의되었는지 확인 
+          if (typeof journalData !== 'undefined') {
+            // 연도 옵션 자동 설정 (데이터에서 추출)
+            const years = [...new Set(journalData.map(paper => paper.year))].sort((a, b) => b - a);
+            const yearFilter = document.getElementById('year-filter');
+            
+            // 기존 옵션 제거 (첫 번째 'all' 옵션 제외)
+            while (yearFilter.options.length > 1) {
+              yearFilter.remove(1);
+            }
+            
+            // 새 옵션 추가
+            years.forEach(year => {
+              const option = document.createElement('option');
+              option.value = year;
+              option.textContent = year + '년';
+              yearFilter.appendChild(option);
+            });
+            
+            // 모든 데이터 표시 (초기에는 필터 없이)
+            filteredData = [...journalData].sort((a, b) => b.year - a.year || b.title.localeCompare(a.title));
+            renderPublicationData(filteredData, 1); // 첫 페이지 렌더링
+          } else {
+            document.getElementById('publication-list').innerHTML = 
+              '<div class="no-results">데이터를 불러오는 중 오류가 발생했습니다. journalData가 정의되지 않았습니다.</div>';
+          }
+        };
+        
+        script.onerror = function() {
+          loadingIndicator.style.display = 'none';
+          document.getElementById('publication-list').innerHTML = 
+            '<div class="no-results">데이터 파일(journalData.js)을 불러오는 중 오류가 발생했습니다.</div>';
+        };
+        
+        document.body.appendChild(script);
+      }
+
+      // 필터링 함수
+      function filterPublications() {
+        // 전역 변수 journalData 확인
+        if (typeof journalData === 'undefined') {
+          document.getElementById('publication-list').innerHTML = 
+            '<div class="no-results">데이터가 아직 로드되지 않았습니다.</div>';
+          return;
+        }
+        
+        const searchTerm = document.getElementById('search-input').value.toLowerCase();
+        const yearFilter = document.getElementById('year-filter').value;
+        
+        // 선택된 카테고리 필터 가져오기
+        const selectedCategories = Array.from(document.querySelectorAll('.category-checkbox:checked'))
+          .map(checkbox => checkbox.value);
+          
+        // 'OTHER' 카테고리 처리 준비
+        const includeOthers = selectedCategories.includes('OTHER');
+        const specificCategories = selectedCategories.filter(cat => cat !== 'OTHER');
+        
+        filteredData = journalData.filter(paper => {
+          const titleMatch = paper.title.toLowerCase().includes(searchTerm);
+          // 메인 저자와 공저자를 모두 검색 대상으로 포함
+          const mainAuthorMatch = paper.main_author && paper.main_author.toLowerCase().includes(searchTerm);
+          const coAuthorsMatch = paper.co_authors && paper.co_authors.toLowerCase().includes(searchTerm);
+          const journalMatch = paper.journal.toLowerCase().includes(searchTerm);
+          
+          // 키워드로도 검색 가능하게 추가
+          const keywordsMatch = paper.keywords && 
+            (typeof paper.keywords === 'string' 
+              ? paper.keywords.toLowerCase().includes(searchTerm) 
+              : paper.keywords.some(keyword => keyword.toLowerCase().includes(searchTerm))
+            );
+          
+          const contentMatch = titleMatch || mainAuthorMatch || coAuthorsMatch || journalMatch || keywordsMatch;
+          
+          const yearMatch = yearFilter === 'all' || paper.year.toString() === yearFilter;
+          
+          // 카테고리 필터링 로직 (SCI, KCI 또는 기타)
+          let categoryMatch = false;
+          
+          if (selectedCategories.length === 0) {
+            // 아무것도 선택되지 않았다면 아무것도 표시하지 않음
+            categoryMatch = false;
+          } else {
+            // SCI나 KCI를 포함하는지 확인
+            if (specificCategories.length > 0 && paper.category && specificCategories.includes(paper.category)) {
+              categoryMatch = true;
+            }
+            // 'OTHER' 옵션 처리 - SCI나 KCI가 아닌 항목들
+            else if (includeOthers && (!paper.category || (paper.category !== 'SCI' && paper.category !== 'KCI'))) {
+              categoryMatch = true;
+            }
+          }
+          
+          return contentMatch && yearMatch && categoryMatch;
+        }).sort((a, b) => b.year - a.year || b.title.localeCompare(a.title)); // 최신순으로 정렬
+        
+        // 필터링 후 첫 페이지 표시
+        currentPage = 1;
+        renderPublicationData(filteredData, currentPage);
+      }
+
+      // 카테고리 뱃지 생성 함수
+      function getCategoryBadge(category) {
+        if (category === 'SCI') {
+          return '<span class="category-badge sci-badge">SCI</span>';
+        } else if (category === 'KCI') {
+          return '<span class="category-badge kci-badge">KCI</span>';
+        }
+        return '';
+      }
+      
+      // 키워드 HTML 생성 함수
+      function renderKeywords(keywords) {
+        if (!keywords) return '';
+        
+        // 문자열 형태의 키워드를 배열로 변환 (세미콜론이나 콤마로 구분)
+        const keywordArray = typeof keywords === 'string' 
+          ? keywords.split(/[;,]/).map(k => k.trim()).filter(k => k) // 빈 문자열 제거
+          : keywords;
+          
+        if (keywordArray.length === 0) return '';
+        
+        return `
+          <div class="publication-keywords">
+            ${keywordArray.map(keyword => `
+              <span class="keyword-tag">
+                <i class="fas fa-tag"></i>${keyword}
+              </span>
+            `).join('')}
+          </div>
+        `;
+      }
+
+      // 페이지네이션 렌더링 함수
+      function renderPagination(data, currentPage) {
+        const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+        
+        if (totalPages <= 1) {
+          document.getElementById('pagination').innerHTML = '';
+          return;
+        }
+        
+        let paginationHTML = '<div class="pagination-container">';
+        
+        // 처음 페이지로 이동 버튼
+        paginationHTML += `
+          <button class="pagination-button" onclick="goToPage(1)" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fas fa-angle-double-left"></i>
+          </button>
+        `;
+        
+        // 이전 페이지로 이동 버튼
+        paginationHTML += `
+          <button class="pagination-button" onclick="goToPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>
+            <i class="fas fa-angle-left"></i>
+          </button>
+        `;
+        
+        // 페이지 번호 버튼
+        // 표시할 페이지 범위 계산 (최대 5개)
+        let startPage = Math.max(1, currentPage - 2);
+        let endPage = startPage + 4;
+
+        if (endPage > totalPages) {
+          endPage = totalPages;
+          startPage = Math.max(1, endPage - 4);
+        }
+        
+        for (let i = startPage; i <= endPage; i++) {
+          paginationHTML += `
+            <button class="pagination-button ${i === currentPage ? 'active' : ''}" onclick="goToPage(${i})">
+              ${i}
+            </button>
+          `;
+        }
+        
+        // 다음 페이지로 이동 버튼
+        paginationHTML += `
+          <button class="pagination-button" onclick="goToPage(${currentPage + 1})" ${currentPage === totalPages ? 'disabled' : ''}>
+            <i class="fas fa-angle-right"></i>
+          </button>
+        `;
+        
+        // 마지막 페이지로 이동 버튼
+        paginationHTML += `
+          <button class="pagination-button" onclick="goToPage(${totalPages})" ${currentPage === totalPages ? 'disabled' : ''}>
+            <i class="fas fa-angle-double-right"></i>
+          </button>
+        `;
+        
+        paginationHTML += '</div>';
+        
+        document.getElementById('pagination').innerHTML = paginationHTML;
+        
+        // 페이지 이동 함수를 전역으로 선언
+        window.goToPage = function(page) {
+          if (page < 1 || page > totalPages) return;
+          currentPage = page;
+          renderPublicationData(filteredData, currentPage);
+          // 페이지 상단으로 스크롤
+          window.scrollTo({
+            top: document.getElementById('publications-section').offsetTop - 100,
+            behavior: 'smooth'
+          });
+        };
+      }
+
+      // 데이터 렌더링 함수
+      function renderPublicationData(data, page) {
+        if (!data || data.length === 0) {
+          document.getElementById('publication-list').innerHTML = 
+            '<div class="no-results">검색 결과가 없습니다.</div>';
+          document.getElementById('pagination').innerHTML = '';
+          return;
+        }
+        
+        // 현재 페이지에 해당하는 데이터만 추출
+        const startIndex = (page - 1) * ITEMS_PER_PAGE;
+        const endIndex = startIndex + ITEMS_PER_PAGE;
+        const paginatedData = data.slice(startIndex, endIndex);
+        
+        let html = '';
+        
+        // 각 논문 표시
+        paginatedData.forEach(paper => {
+          // 카테고리 뱃지 생성
+          const categoryBadge = getCategoryBadge(paper.category);
+          // 키워드 HTML 생성
+          const keywordsHtml = renderKeywords(paper.keywords);
+          
+          // 주저자와 공저자 분리
+          const mainAuthor = paper.main_author || '';
+          const coAuthors = paper.co_authors || '';
+          
+          html += `
+            <div class="publication-card">
+              <span class="publication-year">${paper.year}</span>
+              <h3 class="publication-title">${paper.title} ${categoryBadge}</h3>
+              <div class="publication-authors-container">
+                <p class="publication-authors">${mainAuthor}</p>
+                <p class="publication-journal">${paper.journal}</p>
+              </div>
+              ${coAuthors ? `<p class="publication-coauthors">${coAuthors}</p>` : ''}
+              <div class="publication-abstract">
+                <p>${paper.abstract || '초록 정보가 없습니다.'}</p>
+              </div>
+              <div class="keywords-doi-container">
+                ${keywordsHtml}
+                <div class="publication-links">
+                    ${paper.doi ? `
+                        <a href="https://${paper.doi}" class="publication-link link-doi" target="_blank">
+                          <i class="fas fa-external-link-alt"></i> DOI
+                        </a> 
+                     ` : ''}
+                  </div>
+
+              </div>
+            </div>
+          `;
+        });
+        
+        document.getElementById('publication-list').innerHTML = html;
+        
+        // 페이지네이션 렌더링
+        renderPagination(data, page);
+      }
+      
+      // 스크롤 애니메이션
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(el => {
+        observer.observe(el);
+      });
+      
+      // 헤더 스크롤 효과
+      const header = document.getElementById('main-header');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.style.backgroundColor = 'rgba(0, 0, 0, 0.9)';
+        } else {
+          header.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        }
+      });
+      
+      // 모바일 메뉴 토글 기능 개선 - professor.html과 동일하게 수정
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainMenu = document.getElementById('main-menu');
+      
+      if (menuToggle && mainMenu) {
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation(); // 이벤트 버블링 방지
+          mainMenu.classList.toggle('active');
+          
+          // 모든 드롭다운 메뉴 닫기
+          const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+          allDropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
+          });
+        });
+      }
+      
+      // 모바일에서 드롭다운 메뉴 토글 기능 개선
+      const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+      
+      dropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            e.preventDefault();
+            e.stopPropagation(); // 이벤트 버블링 방지
+            
+            const isActive = this.classList.contains('active');
+            
+            // 모든 드롭다운 토글 비활성화
+            dropdownToggles.forEach(t => {
+              t.classList.remove('active');
+            });
+            
+            // 모든 드롭다운 메뉴 닫기
+            const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+            allDropdownMenus.forEach(menu => {
+              menu.classList.remove('show');
+            });
+            
+            // 현재 메뉴 토글
+            if (!isActive) {
+              this.classList.add('active');
+              this.nextElementSibling.classList.add('show');
+            }
+          }
+        });
+      });
+      
+      // 드롭다운 메뉴 내 링크 클릭 시 이벤트 (모바일)
+      const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+      dropdownLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          // 링크 클릭 시 메뉴 닫기
+          if (window.innerWidth <= 768) {
+            if (mainMenu) {
+              mainMenu.classList.remove('active');
+            }
+            
+            // 모든 드롭다운 메뉴 닫기
+            const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+            allDropdownMenus.forEach(menu => {
+              menu.classList.remove('show');
+            });
+          }
+        });
+      });
+      
+      // 문서 어디든 클릭 시 모바일 메뉴 닫기
+      document.addEventListener('click', function(e) {
+        if (window.innerWidth <= 768) {
+          // 메뉴 토글 또는 메뉴 자체가 아닌 곳을 클릭했을 때만 닫기
+          if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+            mainMenu.classList.remove('active');
+            
+            // 모든 드롭다운 메뉴 닫기
+            const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+            allDropdownMenus.forEach(menu => {
+              menu.classList.remove('show');
+            });
+            
+            // 모든 드롭다운 토글 비활성화
+            dropdownToggles.forEach(t => {
+              t.classList.remove('active');
+            });
+          }
+        }
+      });
+      
+      // 윈도우 크기 변경 시 모바일 메뉴 상태 리셋
+      window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+          mainMenu.classList.remove('active');
+          
+          // 모든 드롭다운 메뉴 닫기
+          const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+          allDropdownMenus.forEach(menu => {
+            menu.classList.remove('show');
+          });
+          
+          // 모든 드롭다운 토글 비활성화
+          dropdownToggles.forEach(t => {
+            t.classList.remove('active');
+          });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

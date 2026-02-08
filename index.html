@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5RKTB94');</script>
+  <!-- End Google Tag Manager -->
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACG Lab - 첨단 융합 기술 연구실</title>
+  <!-- 파비콘 태그 추가 -->
+  <link rel="icon" href="img/favicon_io/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon_io/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon_io/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon_io/apple-touch-icon.png">
+  <!-- 웹매니페스트 경로를 상대 경로로 수정 -->
+  <link rel="manifest" href="./img/favicon_io/site.webmanifest">
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary-color: #0e341b; /* Pantone 3435C: RGB(14, 52, 27) */
+      --secondary-color: #1d1d1f;
+      --accent-color: #686868; /* 회색 */
+      --background-light: #f5f5f7;
+      --text-dark: #1d1d1f;
+      --text-light: #f5f5f7;
+      --card-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --transition-speed: 0.4s;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body { 
+      font-family: 'Noto Sans KR', 'Open Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: var(--text-dark);
+      overflow-x: hidden;
+      background-color: #fff;
+      line-height: 1.6;
+    }
+    
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      backdrop-filter: saturate(180%) blur(20px);
+      position: fixed;
+      width: 100%;
+      z-index: 1000;
+      top: 0;
+      transition: background-color 0.3s ease;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 44px;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 1px;
+    }
+    
+    nav ul {
+      display: flex;
+      list-style: none;
+      align-items: center;
+      margin: 0;
+      padding: 0;
+    }
+    
+    nav li {
+      margin: 0 15px;
+      position: relative;
+      text-align: center;
+    }
+    
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: normal;
+      font-size: 14px;
+      opacity: 0.8;
+      transition: var(--transition-speed);
+    }
+    
+    nav a:hover {
+      opacity: 1;
+    }
+    
+    /* 드롭다운 메뉴 스타일 */
+    .dropdown {
+      position: relative;
+    }
+    
+    .dropdown-toggle {
+      cursor: pointer;
+    }
+    
+    .dropdown-toggle:after {
+      content: '\f107';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin-left: 5px;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      min-width: 180px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+      z-index: 1000;
+      border-radius: 4px;
+      padding: 0.5rem 0;
+    }
+    
+    .dropdown-menu a {
+      display: block;
+      padding: 8px 15px;
+      text-align: left;
+      font-size: 14px;
+    }
+    
+    .dropdown-menu a:hover {
+      background-color: rgba(255,255,255,0.05);
+    }
+    
+    /* 데스크톱에서는 호버 시 드롭다운 메뉴 표시 */
+    @media (min-width: 769px) {
+      .dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+    
+    /* 모바일에서 드롭다운 메뉴 */
+    @media (max-width: 768px) {
+      .dropdown-menu {
+        position: static;
+        width: 100%;
+        background-color: transparent;
+        box-shadow: none;
+        border-radius: 0;
+        padding: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+        display: block;
+      }
+      
+      /* 서브메뉴 확장 스타일 */
+      .dropdown-menu.show {
+        max-height: 500px; /* 충분히 큰 값으로 설정 */
+      }
+      
+      .dropdown-menu a {
+        padding: 10px 0;
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
+        text-align: center;
+        border: none;
+        margin: 0;
+      }
+      
+      .dropdown-menu a:hover {
+        color: #fff;
+        background-color: transparent;
+      }
+      
+      /* 활성화된 드롭다운 토글 버튼 스타일 */
+      .dropdown-toggle.active:after {
+        content: '\f106'; /* 위쪽 화살표로 변경 */
+      }
+    }
+    
+    /* 메뉴 토글 버튼 스타일 */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* 모바일 메뉴 아이콘 */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 1rem 0;
+      }
+      
+      nav li {
+        margin: 1rem 0;
+      }
+      
+      nav ul.active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    /* PC에서는 메뉴가 우측에 표시됨 */
+    @media (min-width: 769px) {
+      nav {
+        justify-content: space-between;
+      }
+      
+      .logo {
+        margin-right: auto;
+      }
+      
+      nav ul {
+        justify-content: flex-end;
+      }
+    }
+    
+    .hero {
+      height: 100vh;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: 44px;
+      position: relative;
+      width: 100%;
+      padding: 0;
+    }
+    
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+    }
+    
+    /* 슬라이더 오버레이 추가 */
+    .slider-container::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.7), rgba(0,0,0,0.4));
+      z-index: 5;
+      pointer-events: none; /* 오버레이를 통해 클릭 가능하도록 */
+    }
+    
+    .hero-content {
+      position: absolute;
+      z-index: 10;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      background-color: transparent;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      left: 0;
+      top: 0;
+      transform: none;
+      max-width: none;
+    }
+    
+    .hero-content h1, .hero-content h2, .hero-content p, .hero-content .btn-primary {
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 2rem;
+    }
+    
+    .hero-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: -1;
+      pointer-events: none;
+    }
+    
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      border-radius: 0;
+      box-shadow: none;
+      z-index: 1;
+      background-color: #f0f0f0;
+    }
+    
+    .slide {
+      width: 100%;
+      height: 100%;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-color: #f0f0f0; /* 슬라이드에도 회색 배경 추가 */
+    }
+    
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .slider-nav {
+      position: absolute;
+      bottom: 30px;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 15; /* z-index 값을 증가시켜 오버레이 위에 표시되도록 수정 */
+    }
+    
+    .prev-btn, .next-btn {
+      background: rgba(255, 255, 255, 0.3);
+      color: #fff;
+      border: none;
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      margin: 0 15px;
+      transition: all 0.3s ease;
+      font-size: 18px;
+      z-index: 15; /* z-index 값 추가 */
+    }
+    
+    .prev-btn:hover, .next-btn:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+    }
+    
+    .slider-dots {
+      display: flex;
+      align-items: center;
+    }
+    
+    .dot {
+      width: 12px;
+      height: 12px;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      margin: 0 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .dot.active {
+      background: #fff;
+      transform: scale(1.2);
+    }
+    
+    .dot:hover {
+      background: #fff;
+    }
+    
+    @media (max-width: 768px) {
+      .prev-btn, .next-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+        margin: 0 10px;
+      }
+      
+      .dot {
+        width: 10px;
+        height: 10px;
+        margin: 0 5px;
+      }
+      
+      .slider-nav {
+        bottom: 20px;
+      }
+    }
+    
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .hero-content h2 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    .hero-content p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      animation: fadeIn 2s ease-out;
+    }
+    
+    .btn-primary {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: #fff;
+      text-decoration: none;
+      padding: 12px 30px;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+      animation: fadeIn 2.5s ease-out;
+    }
+    
+    .btn-primary:hover {
+      background-color: #1a5831;
+      transform: translateY(-3px);
+    }
+    
+    .about-section {
+      padding: 6rem 0;
+      background-color: #fff;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+    
+    .section-title p {
+      font-size: 1.2rem;
+      color: #666;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .about-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    .about-text {
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+    
+    .about-text p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.8;
+    }
+    
+    .about-image {
+      position: relative;
+      animation: fadeIn 1.5s ease-out;
+      display: flex;
+      align-items: center;
+    }
+    
+    .about-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: var(--card-shadow);
+    }
+    
+    .research-areas {
+      padding: 6rem 0;
+      background-color: var(--background-light);
+    }
+    
+    .research-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .research-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .research-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+    }
+    
+    .research-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .research-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    
+    .research-card:hover .research-image img {
+      transform: scale(1.08);
+    }
+    
+    .research-content {
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .research-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--secondary-color);
+    }
+    
+    .research-content p {
+      color: #555;
+      flex: 1;
+    }
+    
+    .stats-section {
+      padding: 6rem 0;
+      background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('stats-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: #fff;
+    }
+    
+    .stats-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    
+    .stat-item {
+      padding: 1.5rem;
+    }
+    
+    .stat-item i {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: var(--background-light);
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--background-light);
+    }
+    
+    .stat-label {
+      font-size: 1.2rem;
+    }
+    
+    .recent-news {
+      padding: 6rem 0;
+      background-color: #fff;
+    }
+    
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .news-card {
+      background-color: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--card-shadow);
+      transition: transform 0.3s ease;
+      height: 100%;
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .news-card:hover {
+      transform: translateY(-8px);
+    }
+    
+    .news-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .news-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    
+    .news-card:hover .news-image img {
+      transform: scale(1.08);
+    }
+    
+    .news-content {
+      padding: 1.5rem;
+    }
+    
+    .news-date {
+      color: #777;
+      font-size: 0.9rem;
+      margin-bottom: 0.8rem;
+      display: block;
+    }
+    
+    .news-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var (--secondary-color);
+    }
+    
+    .news-content p {
+      margin-bottom: 1rem;
+      color: #555;
+    }
+    
+    .contact-section {
+      padding: 6rem 0;
+      background-color: var(--background-light);
+    }
+    
+    .contact-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+    }
+    
+    .contact-info {
+      animation: fadeIn 1s ease-out;
+    }
+    
+    .contact-info h3 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary-color);
+    }
+    
+    .contact-details {
+      list-style: none;
+    }
+    
+    .contact-details li {
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: flex-start;
+    }
+    
+    .contact-details i {
+      margin-right: 1rem;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      padding-top: 3px;
+    }
+    
+    .contact-form {
+      animation: fadeIn 1.5s ease-out;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form {
+      border-color: var(--primary-color);
+    }
+    
+    textarea.form-control {
+      height: 150px;
+      resize: vertical;
+    }
+    
+    footer {
+      background-color: var(--secondary-color);
+      color: #fff;
+      padding: 3rem 0;
+      text-align: center;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: left;
+    }
+    
+    .footer-section h3 {
+      margin-bottom: 1.2rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-section a {
+      color: #fff;
+      opacity: 0.8;
+      transition: opacity 0.3s;
+    }
+    
+    .footer-section a:hover {
+      opacity: 1;
+    }
+    
+    .footer-section ul {
+      list-style: none;
+    }
+    
+    .footer-section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .footer-bottom {
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .social-icons {
+      margin-bottom: 1rem;
+    }
+    
+    .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      color: #fff;
+      font-size: 1.5rem;
+      transition: transform 0.3s;
+    }
+    
+    .social-icons a:hover {
+      transform: translateY(-5px);
+    }
+    
+    /* 애니메이션 */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .animate-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* 반응형 디자인 */
+    @media (max-width: 992px) {
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.8rem;
+      }
+      
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.5rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+      
+      .menu-toggle {
+        display: block;
+      }
+      
+      nav ul {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 44px;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 1rem 0;
+      }
+      
+      nav li {
+        margin: 1rem 0;
+      }
+      
+      nav ul.active {
+        display: flex;
+      }
+    }
+    
+    /* 메뉴 토글 버튼 스타일 */
+    .menu-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    /* 모바일 메뉴 아이콘 */
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+    
+    .hero-logo {
+      max-width: 540px;
+      transition: max-width 0.3s ease;
+    }
+    
+    .hero-logo img {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.3));
+    }
+    
+    .hero-content h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
+    }
+
+    /* 모바일 화면에서의 로고와 텍스트 크기 최적화 */
+    @media (max-width: 992px) {
+      .hero-logo {
+        max-width: 420px;
+      }
+
+      .hero-content h1 {
+        font-size: 3rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-logo {
+        max-width: 320px;
+      }
+
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.3rem;
+      }
+      
+      .hero-content p {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-logo {
+        max-width: 260px;
+      }
+
+      .hero-content h1 {
+        font-size: 1.8rem;
+        margin-bottom: 0.5rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .hero-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+    }
+
+    /* 420px 미만의 작은 화면 최적화 (확장) */
+    @media (max-width: 420px) {
+      /* 컨테이너 패딩 조정 */
+      .container {
+        padding: 0 0.8rem;
+      }
+      
+      /* 섹션 패딩 최적화 */
+      .about-section, 
+      .research-areas, 
+      .contact-section {
+        padding: 3rem 0;
+      }
+      
+      /* 섹션 타이틀 크기 조정 */
+      .section-title h2 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      .section-title p {
+        font-size: 1rem;
+      }
+      
+      /* 연구 카드 여백 및 간격 최적화 */
+      .research-cards {
+        gap: 1.5rem;
+        margin-top: 2rem;
+      }
+      
+      .research-card {
+        border-radius: 8px;
+      }
+      
+      .research-image {
+        height: 160px;
+      }
+      
+      .research-content {
+        padding: 1.2rem;
+      }
+      
+      .research-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+      }
+      
+      /* 텍스트 최적화 */
+      .about-text h3 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+      }
+      
+      .about-text p {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.2rem;
+      }
+      
+      /* 버튼 사이즈 최적화 */
+      .btn-primary {
+        padding: 10px 24px;
+        font-size: 0.9rem;
+      }
+      
+      /* 슬라이더 네비게이션 최적화 */
+      .slider-nav {
+        bottom: 15px;
+      }
+      
+      .prev-btn, .next-btn {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+        margin: 0 8px;
+      }
+      
+      .dot {
+        width: 8px;
+        height: 8px;
+        margin: 0 4px;
+      }
+      
+      /* 푸터 최적화 (유지하되 내부 콘텐츠 조정) */
+      .footer-section h3 {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+      }
+      
+      .footer-section p,
+      .footer-section li {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+      }
+      
+      .footer-bottom p {
+        font-size: 0.8rem;
+      }
+    }
+
+    /* 360px 미만의 매우 작은 화면을 위한 추가 최적화 */
+    @media (max-width: 360px) {
+      /* 컨테이너 패딩 추가 축소 */
+      .container {
+        padding: 0 0.5rem;
+      }
+      
+      /* 로고 크기 최적화 */
+      .hero-logo {
+        max-width: 220px;
+      }
+      
+      /* 히어로 콘텐츠 텍스트 추가 축소 */
+      .hero-content h1 {
+        font-size: 1.6rem;
+      }
+      
+      .hero-content h2 {
+        font-size: 1rem;
+      }
+      
+      .hero-content p {
+        font-size: 0.85rem;
+      }
+      
+      /* 연구 카드 이미지 높이 감소 */
+      .research-image {
+        height: 140px;
+      }
+      
+      /* 섹션 타이틀 추가 최적화 */
+      .section-title h2 {
+        font-size: 1.6rem;
+      }
+      
+      /* 그리드 간격 줄이기 */
+      .about-content,
+      .research-cards,
+      .footer-content {
+        gap: 1.5rem;
+      }
+      
+      .research-content h3 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5RKTB94"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+
+  <header id="main-header">
+    <div class="container">
+      <nav>
+        <a href="index.html" class="logo">ACG Lab</a>
+        <button class="menu-toggle" aria-label="메뉴 열기">
+          <i class="fas fa-bars"></i>
+        </button>
+        <ul id="main-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">People</a>
+            <div class="dropdown-menu">
+              <a href="Pages/people/professor.html">Professor</a>
+              <a href="Pages/people/postdocs.html">Post doc.</a>
+              <a href="Pages/people/students.html">Students</a>
+              <a href="Pages/people/alumni.html">Alumni</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Research</a>
+            <div class="dropdown-menu">
+              <a href="Pages/projects/research_scope.html">Research Scope</a>
+              <a href="Pages/projects/ongoing.html">Ongoing Projects</a>
+              <a href="Pages/projects/completed.html">Completed Projects</a>
+            </div>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle">Publications</a>
+            <div class="dropdown-menu">
+              <a href="Pages/publications/journal.html">Journal Articles</a>
+              <a href="Pages/publications/conference.html">Conference Papers</a>
+              <a href="Pages/publications/book_chapters.html">Book Chapters & Articles</a>
+              <a href="Pages/publications/patents.html">Patents</a>
+            </div>
+          </li>
+          <li><a href="Pages/gallery/gallery.html">Gallery</a></li>
+          <li><a href="Pages/contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="slider-container">
+      <div class="hero-content">
+        <div class="hero-logo">
+            <img src="img/logo.svg?v=?php echo time(); ?>" alt="ACG Lab 로고">
+        </div>
+        <h1>
+          Advanced Convergence <br />
+          Technology Group
+        </h1>
+        <h2>첨단 융합 기술 연구실</h2>
+        <p>자동화, 로봇공학, 인공지능을 통한 혁신적 기술을 연구합니다</p>
+      </div>
+      
+      <div class="slider">
+        <!-- 슬라이드가 JavaScript에 의해 동적으로 여기에 삽입됩니다 -->
+      </div>
+
+      <div class="slider-nav">
+        <button class="prev-btn" aria-label="이전 슬라이드"><i class="fas fa-chevron-left"></i></button>
+        <div class="slider-dots">
+          <!-- 이미지 개수만큼 동적으로 생성될 예정 -->
+        </div>
+        <button class="next-btn" aria-label="다음 슬라이드"><i class="fas fa-chevron-right"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      
+      <div class="about-content">
+        <div class="about-text animate-on-scroll">
+          <p>성균관대학교 건축공학과 첨단 융합 기술 연구실(ACG Lab)은 권순욱 교수의 지도하에 자동화, 로봇공학, 인공지능을 활용한 다양한 산업 분야의 기술 연구를 수행하고 있습니다.</p>
+          <p>우리 연구실은 건설, 반도체, 제조업 등 다양한 산업 분야의 디지털 혁신을 주도하며, 특히 생산성 향상과 안전성 강화를 위한 첨단 기술 개발에 집중하고 있습니다. BIM(Building Information Modeling), 디지털 트윈, 드론, 로봇, 인공지능, IoT 등 다양한 기술을 융합하여 스마트한 미래 산업 환경을 구축하고 있습니다.</p>
+          <p>국내외 유수 대학 및 기업(SK하이닉스, LG에너지솔루션 등)과의 협력을 통해 혁신적인 연구를 진행하고 있으며, 학생들에게 실무 중심의 교육과 연구 기회를 제공하여 미래 산업을 이끌어갈 인재를 양성하고 있습니다.</p>
+        </div>
+        
+        <div class="about-image animate-on-scroll">
+          <img src="img/indexpage/main_img.jpg" alt="ACG 연구실 이미지">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="research-areas">
+    <div class="container">
+      <div class="section-title">
+        <h2>주요 연구 분야</h2>
+        <p>첨단 기술을 활용한 융합 연구</p>
+      </div>
+      
+      <div class="research-cards">
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research1.jpg" alt="스마트 자동화">
+          </div>
+          <div class="research-content">
+            <h3>스마트 자동화</h3>
+            <p>생산성 향상을 위한 자동화 시스템 개발 연구. BIM 기반 설계 자동화, 시공 프로세스 자동화, 스마트 제조 프로세스 등을 연구합니다.</p>
+          </div>
+        </div>
+        
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research2.jpg" alt="로보틱스">
+          </div>
+          <div class="research-content">
+            <h3>로보틱스</h3>
+            <p>현장에서 활용 가능한 로봇 시스템 개발 연구. 드론을 활용한 모니터링, 자율주행 장비, 배관 시스템 로봇 등을 연구합니다.</p>
+          </div>
+        </div>
+        
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research3.jpg" alt="인공지능">
+          </div>
+          <div class="research-content">
+            <h3>인공지능</h3>
+            <p>인공지능과 데이터 분석을 활용한 산업 혁신 연구. 딥러닝을 통한 안전 모니터링, 예측 모델 개발, 빅데이터 분석 등을 연구합니다.</p>
+          </div>
+        </div>
+        
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research4.jpg" alt="FAB 스마트 O&M">
+          </div>
+          <div class="research-content">
+            <h3>FAB 스마트 O&M</h3>
+            <p>XR 및 IoT를 활용한 FAB 환경 내에서 기계 설비 유지관리 XR 기술, 진공 배관 오토 라우팅 등 반도체 산업을 위한 스마트 기술을 연구합니다.</p>
+          </div>
+        </div>
+
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research5.jpg" alt="디지털 트윈">
+          </div>
+          <div class="research-content">
+            <h3>디지털 트윈</h3>
+            <p>현실 세계의 물리적 객체와 시스템을 가상공간에 구현하는 기술. BIM 정합성 검측 및 분석 기술, 다양한 산업 시설의 디지털화 및 스마트 유지관리 시스템을 연구합니다.</p>
+          </div>
+        </div>
+
+        <div class="research-card">
+          <div class="research-image">
+            <img src="img/indexpage/research6.jpg" alt="스마트 제조">
+          </div>
+          <div class="research-content">
+            <h3>스마트 제조</h3>
+            <p>AI 기반 자동 라우팅, BIM 모델링 자동화, 스마트 웨어러블 디바이스를 활용한 제조 환경 모니터링 및 유지관리 기술을 연구합니다.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+<!--
+
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-container">
+        <div class="stat-item">
+          <i class="fas fa-book"></i>
+          <div class="stat-number" data-target="120">0</div>
+          <div class="stat-label">연구 논문</div>
+        </div>
+        
+        <div class="stat-item">
+          <i class="fas fa-project-diagram"></i>
+          <div class="stat-number" data-target="35">0</div>
+          <div class="stat-label">연구 프로젝트</div>
+        </div>
+        
+        <div class="stat-item">
+          <i class="fas fa-user-graduate"></i>
+          <div class="stat-number" data-target="50">0</div>
+          <div class="stat-label">졸업생</div>
+        </div>
+        
+        <div class="stat-item">
+          <i class="fas fa-award"></i>
+          <div class="stat-number" data-target="15">0</div>
+          <div class="stat-label">수상 경력</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+-->
+
+  <!-- 
+  <section class="recent-news">
+    <div class="container">
+      <div class="section-title">
+        <h2>최근 소식</h2>
+        <p>ACG Lab의 최신 연구 성과 및 소식</p>
+      </div>
+      
+      <div class="news-grid">
+        <div class="news-card">
+          <div class="news-image">
+            <img src="news1.jpg" alt="연구 소식">
+          </div>
+          <div class="news-content">
+            <span class="news-date">2025년 4월 15일</span>
+            <h3>AI 기반 건설현장 모니터링 시스템 개발</h3>
+            <p>우리 연구실은 인공지능을 활용한 건설현장 실시간 모니터링 시스템을 개발하여 국제 학회에서 발표하였습니다.</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <img src="news2.jpg" alt="연구 소식">
+          </div>
+          <div class="news-content">
+            <span class="news-date">2025년 3월 20일</span>
+            <h3>국제 학술대회 우수 논문상 수상</h3>
+            <p>박지민 연구원(박사과정)의 '로봇과 디지털 트윈을 활용한 건설 자동화' 연구가 ICCEM 2025에서 우수 논문상을 수상했습니다.</p>
+          </div>
+        </div>
+        
+        <div class="news-card">
+          <div class="news-image">
+            <img src="news3.jpg" alt="연구 소식">
+          </div>
+          <div class="news-content">
+            <span class="news-date">2025년 2월 10일</span>
+            <h3>건설 로봇공학 산학협력 체결</h3>
+            <p>우리 연구실은 현대건설과 함께 건설 현장에서의 로봇 활용을 위한 산학협력 연구를 진행합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+-->
+
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>ACG Lab</h3>
+          <p>Advanced Convergence Technology Group</p>
+          <p>첨단 융합 기술 연구실</p>
+        </div>
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="Pages/people/professor.html">Professor</a></li>
+            <li><a href="Pages/people/postdocs.html">Post doc.</a></li>
+            <li><a href="Pages/people/students.html">Students</a></li>
+            <li><a href="Pages/projects/ongoing.html">Research</a></li>
+            <li><a href="Pages/publications/journal.html">Publications</a></li>
+            <li><a href="Pages/contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>경기도 수원시 장안구 서부로 2066</p>
+          <p>성균관대학교 자연과학캠퍼스 제1공학관 22404A호</p>
+          <p>Tel: 031-290-7652</p>
+          <p>Email: swkwon@skku.edu</p>
+        </div>
+      </div>
+      <!--<div class="social-icons">
+        <a href="#" aria-label="트위터"><i class="fab fa-twitter"></i></a>
+        <a href="#" aria-label="링크드인"><i class="fab fa-linkedin"></i></a>
+        <a href="#" aria-label="깃허브"><i class="fab fa-github"></i></a>
+        <a href="#" aria-label="유튜브"><i class="fab fa-youtube"></i></a>
+      </div>
+    -->
+      <div class="footer-bottom">
+        <p>&copy; 2025 ACG Lab - Advanced Convergence Technology Group. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 슬라이더 기능 구현
+      const slider = document.querySelector('.slider');
+      const sliderDots = document.querySelector('.slider-dots');
+      const prevBtn = document.querySelector('.prev-btn');
+      const nextBtn = document.querySelector('.next-btn');
+      let currentSlide = 0;
+      let slideInterval;
+      let slides;
+      
+      // 이미지 폴더 경로 설정
+      const imageFolderPath = 'img/indexpage/SlidePhoto/';
+      
+      // 기본 이미지 설정 (이미지 로딩 실패시 사용)
+      const defaultImages = [
+        'img/indexpage/main_img.jpg',
+        'img/indexpage/construction_automation.jpg',
+        'img/indexpage/main_img_sub.jpg'
+      ];
+      
+      // 슬라이드 이미지 동적 로딩 함수
+      async function loadSlideImages() {
+        try {
+          console.log('슬라이드 이미지 로드 시작');
+          
+          // 지원할 이미지 확장자 목록 - 모든 확장자를 명시적으로 확인
+          const imageExtensions = ['.gif', '.png', '.jpg', '.jpeg'];
+          const maxImages = 20; // 최대 이미지 수
+          let validImages = [];
+          
+          // 이미지가 존재하는지 확인하는 함수 - 오류 로깅 방지 및 디버깅 정보 추가
+          const checkImageExists = (url) => {
+            return new Promise((resolve) => {
+              const img = new Image();
+              img.onload = () => {
+                console.log(`이미지 로드 성공: ${url}`);
+                resolve(true);
+              };
+              
+              img.onerror = () => {
+                console.log(`이미지 로드 실패: ${url}`);
+                resolve(false);
+              };
+              
+              // 오류 메시지를 콘솔에 출력하지 않도록 처리
+              img.addEventListener('error', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+              }, true);
+              
+              img.src = url;
+            });
+          };
+          
+          // 하드코딩된 이미지 목록 시도
+          // 폴더 내의 파일명을 실제로 파악하여 명시적으로 지정
+          const knownFiles = [
+            //'img/indexpage/SlidePhoto/1.gif',
+            'img/indexpage/SlidePhoto/2.png', 
+            'img/indexpage/SlidePhoto/3.png',
+            'img/indexpage/SlidePhoto/4.jpg'
+          ];
+          
+          // 명시적 파일 확인 후 존재하는 파일만 추가
+          for (const file of knownFiles) {
+            const exists = await checkImageExists(file);
+            if (exists) {
+              validImages.push(file);
+            }
+          }
+          
+          // 명시적 파일 확인 후에도 충분한 이미지가 없다면 숫자+확장자 조합으로 시도
+          if (validImages.length < 2) {
+            console.log('충분한 이미지가 없어 숫자+확장자 조합으로 시도합니다.');
+            
+            // 1부터 maxImages까지 반복 (파일이 1.gif, 2.png 처럼 숫자 기반일 경우)
+            for (let i = 1; i <= maxImages; i++) {
+              let imageFound = false;
+              
+              // 각 확장자 시도
+              for (const ext of imageExtensions) {
+                const imageUrl = `${imageFolderPath}${i}${ext}`;
+                const exists = await checkImageExists(imageUrl);
+                if (exists) {
+                  validImages.push(imageUrl);
+                  imageFound = true;
+                  break;
+                }
+              }
+              
+              // 이미지 숫자 건너뜀 허용 (중간에 숫자가 빠져도 계속 검색)
+              // 하지만 연속으로 3개 이상 못 찾으면 검색 중단
+              if (!imageFound) {
+                console.log(`${i}번 이미지를 찾지 못했습니다.`);
+                // 이미 충분한 이미지를 찾았거나, 연속 3회 이상 실패하면 중단
+                if (validImages.length >= 3 || i >= 3) {
+                  break;
+                }
+              }
+            }
+          }
+          
+          // 유효한 이미지가 있으면 슬라이드 생성
+          if (validImages.length > 0) {
+            console.log(`총 ${validImages.length}개의 슬라이드 이미지를 찾았습니다:`, validImages);
+            createSlides(validImages);
+          } else {
+            console.log('슬라이드 이미지를 찾을 수 없어 기본 이미지를 사용합니다.');
+            createSlides(defaultImages);
+          }
+        } catch (error) {
+          console.log('이미지 로드 중 오류가 발생하여 기본 이미지를 사용합니다:', error);
+          createSlides(defaultImages);
+        }
+      }
+      
+      // 슬라이드 생성 함수
+      function createSlides(imageUrls) {
+        slider.innerHTML = ''; // 기존 슬라이드 초기화
+        
+        imageUrls.forEach((imageUrl, index) => {
+          const slide = document.createElement('div');
+          slide.classList.add('slide');
+          if (index === 0) slide.classList.add('active');
+          
+          // 캐시 무효화를 위한 타임스탬프 추가
+          const timestamp = new Date().getTime();
+          const imageWithCache = imageUrl.includes('?') ? 
+            `${imageUrl}&v=${timestamp}` : `${imageUrl}?v=${timestamp}`;
+          
+          slide.style.backgroundImage = `url(${imageWithCache})`;
+          slider.appendChild(slide);
+        });
+        
+        // 슬라이드 참조 업데이트
+        slides = document.querySelectorAll('.slide');
+        
+        // 이미지 개수에 맞게 동적으로 dots 생성
+        createDots();
+        
+        // 슬라이드 자동 전환 시작
+        startSlideShow();
+      }
+      
+      // 이미지 개수에 맞게 동적으로 dots 생성
+      function createDots() {
+        sliderDots.innerHTML = ''; // 기존 dots 초기화
+        for (let i = 0; i < slides.length; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('dot');
+          if (i === 0) dot.classList.add('active');
+          dot.setAttribute('data-slide', i);
+          dot.addEventListener('click', function() {
+            stopSlideShow();
+            showSlide(i);
+            startSlideShow();
+          });
+          sliderDots.appendChild(dot);
+        }
+      }
+      
+      // 슬라이드 자동 전환 시간 (밀리초)
+      const autoSlideInterval = 5000;
+      
+      // 슬라이드 전환 함수
+      function showSlide(n) {
+        // 슬라이드가 로드되지 않았으면 함수 실행을 중단
+        if (!slides || slides.length === 0) {
+          console.log('슬라이드가 아직 로드되지 않았습니다.');
+          return;
+        }
+        
+        // dots 컬렉션 업데이트
+        const dots = document.querySelectorAll('.dot');
+        
+        // dots가 없거나 slides와 길이가 다르면 함수 실행을 중단
+        if (!dots || dots.length === 0 || dots.length !== slides.length) {
+          console.log('도트가 로드되지 않았거나 슬라이드와 개수가 일치하지 않습니다.');
+          return;
+        }
+        
+        // 현재 활성화된 슬라이드와 도트 비활성화
+        slides[currentSlide].classList.remove('active');
+        dots[currentSlide].classList.remove('active');
+        
+        // 새 슬라이드 인덱스 설정 (순환 구조)
+        currentSlide = (n + slides.length) % slides.length;
+        
+        // 새 슬라이드와 도트 활성화
+        slides[currentSlide].classList.add('active');
+        dots[currentSlide].classList.add('active');
+      }
+      
+      // 다음 슬라이드로 이동
+      function nextSlide() {
+        // 슬라이드가 없으면 함수 실행을 중단
+        if (!slides || slides.length === 0) return;
+        showSlide(currentSlide + 1);
+      }
+      
+      // 이전 슬라이드로 이동
+      function prevSlide() {
+        // 슬라이드가 없으면 함수 실행을 중단
+        if (!slides || slides.length === 0) return;
+        showSlide(currentSlide - 1);
+      }
+      
+      // 자동 슬라이드 시작
+      function startSlideShow() {
+        if (!slideInterval) {
+          slideInterval = setInterval(() => {
+            // 슬라이드가 로드되었는지 확인 후 실행
+            if (slides && slides.length > 0) {
+              nextSlide();
+            }
+          }, autoSlideInterval);
+        }
+      }
+      
+      // 자동 슬라이드 멈춤
+      function stopSlideShow() {
+        if (slideInterval) {
+          clearInterval(slideInterval);
+          slideInterval = null;
+        }
+      }
+      
+      // 이벤트 리스너 등록
+      prevBtn.addEventListener('click', function() {
+        stopSlideShow();
+        prevSlide();
+        startSlideShow();
+      });
+      
+      nextBtn.addEventListener('click', function() {
+        stopSlideShow();
+        nextSlide();
+        startSlideShow();
+      });
+      
+      // 슬라이드 이미지 로드 함수 호출
+      loadSlideImages();
+      
+      // 슬라이더에 마우스 올렸을 때 자동 전환 멈춤
+      document.querySelector('.slider-container').addEventListener('mouseenter', stopSlideShow);
+      document.querySelector('.slider-container').addEventListener('mouseleave', startSlideShow);
+      
+      // 스크롤 애니메이션
+      const animatedElements = document.querySelectorAll('.animate-on-scroll');
+      
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
+      
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+      
+      animatedElements.forEach(el => {
+        observer.observe(el);
+      });
+      
+      // 숫자 카운터 애니메이션
+      function counter(id, start, end, duration) {
+        let obj = document.querySelector(id),
+            current = start,
+            range = end - start,
+            increment = end > start ? 1 : -1,
+            step = Math.abs(Math.floor(duration / range)),
+            timer = setInterval(() => {
+              current += increment;
+              obj.textContent = current;
+              if (current == end) {
+                clearInterval(timer);
+              }
+            }, step);
+      }
+      
+      // stats 섹션이 보일 때 카운터 시작
+      const statsSection = document.querySelector('.stats-section');
+      let hasAnimated = false;
+      
+      if (statsSection) {
+        const statsObserver = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting && !hasAnimated) {
+            hasAnimated = true;
+            document.querySelectorAll('.stat-number').forEach(stat => {
+              const target = parseInt(stat.getAttribute('data-target'));
+              counter(`.stat-number[data-target="${target}"]`, 0, target, 2000);
+            });
+          }
+        }, {
+          threshold: 0.5
+        });
+        
+        statsObserver.observe(statsSection);
+      }
+      
+      // 헤더 스크롤 효과
+      const header = document.getElementById('main-header');
+      
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.style.backgroundColor = 'rgba(51, 51, 51, 0.95)';
+        } else {
+          header.style.backgroundColor = '#333333';
+        }
+      });
+      
+      // 모바일 메뉴 토글 기능
+      const menuToggle = document.querySelector('.menu-toggle');
+      const mainMenu = document.getElementById('main-menu');
+      
+      if (menuToggle && mainMenu) {
+        // 모바일 메뉴 토글 버튼 이벤트 처리
+        menuToggle.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation(); // 이벤트 버블링 방지
+          mainMenu.classList.toggle('active');
+          console.log('Menu toggle clicked!'); // 디버깅용
+        });
+        
+        // 모바일에서 드롭다운 메뉴 토글 처리
+        const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+        
+        dropdownToggles.forEach(toggle => {
+          toggle.addEventListener('click', function(e) {
+            // 모바일 환경에서만 기본 동작 방지
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              e.stopPropagation(); // 이벤트 버블링 방지
+              
+              // 다른 드롭다운 메뉴 모두 닫기
+              const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+              const currentDropdown = this.nextElementSibling;
+              
+              allDropdownMenus.forEach(menu => {
+                if (menu !== currentDropdown && menu.classList.contains('show')) {
+                  menu.classList.remove('show');
+                }
+              });
+              
+              // 현재 메뉴 토글
+              currentDropdown.classList.toggle('show');
+            }
+          });
+        });
+        
+        // 드롭다운 메뉴 내 링크 클릭 시 이벤트 (모바일)
+        const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+        dropdownLinks.forEach(link => {
+          link.addEventListener('click', function() {
+            // 링크 클릭 시 메뉴 닫기
+            if (window.innerWidth <= 768) {
+              mainMenu.classList.remove('active');
+            }
+          });
+        });
+        
+        // 문서 어디든 클릭 시 모바일 메뉴 닫기
+        document.addEventListener('click', function(e) {
+          if (window.innerWidth <= 768) {
+            if (!mainMenu.contains(e.target) && !menuToggle.contains(e.target)) {
+              mainMenu.classList.remove('active');
+              
+              // 모든 드롭다운 메뉴 닫기
+              const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+              allDropdownMenus.forEach(menu => {
+                menu.classList.remove('show');
+              });
+            }
+          }
+        });
+        
+        // 윈도우 크기 변경 시 모바일 메뉴 상태 리셋
+        window.addEventListener('resize', function() {
+          if (window.innerWidth > 768) {
+            mainMenu.classList.remove('active');
+            const allDropdownMenus = document.querySelectorAll('.dropdown-menu');
+            allDropdownMenus.forEach(menu => {
+              menu.classList.remove('show');
+            });
+          }
+        });
+      } else {
+        console.error('Menu toggle or main menu elements not found');
+      }
+    });
+  </script>
+</body>
+</html>
